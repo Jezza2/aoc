@@ -1,0 +1,1 @@
+add_executable(aoc-2022-2 main.cpp)
