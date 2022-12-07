@@ -24,7 +24,7 @@ std::pair<rpair_t, rpair_t> parse_line(const std::string& line)
     };
 }
 
-int range_size(const rpair_t& a)
+std::size_t range_size(const rpair_t& a)
 {
     return a.second - a.first + 1;
 }
@@ -45,16 +45,16 @@ std::set<int> combine_ranges(const rpair_t& a, const rpair_t& b)
 bool inclusive_range(const rpair_t& a, const rpair_t& b)
 {
     const auto combined = combine_ranges(a, b);
-    const int asize = range_size(a);
-    const int bsize = range_size(b);
+    const std::size_t asize = range_size(a);
+    const std::size_t bsize = range_size(b);
     return combined.size() == std::max(asize, bsize);
 }
 
 bool overlapping_range(const rpair_t& a, const rpair_t& b)
 {
     const auto combined = combine_ranges(a, b);
-    const int asize = range_size(a);
-    const int bsize = range_size(b);
+    const std::size_t asize = range_size(a);
+    const std::size_t bsize = range_size(b);
     return combined.size() < asize + bsize;
 }
 
